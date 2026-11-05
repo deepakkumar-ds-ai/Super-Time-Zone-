@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f7fb">
+    <meta name="description" content="A beautifully simple global time management workspace.">
+    <title>Super Time Zone</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar">
+        <a class="brand" href="#" aria-label="Super Time Zone home">
+          <span class="brand-mark"><span></span><span></span><span></span></span>
+          <span>super<span class="brand-light">timezone</span></span>
+        </a>
+        <div class="workspace-label">WORKSPACE</div>
+        <nav class="main-nav" aria-label="Main navigation">
+          <button class="nav-item active" data-page="home"><span class="nav-icon">⌂</span>Overview</button>
+          <button class="nav-item" data-page="world"><span class="nav-icon">◷</span>World clock</button>
+          <button class="nav-item" data-page="converter"><span class="nav-icon">⇄</span>Time converter</button>
+          <button class="nav-item" data-page="map"><span class="nav-icon">⌖</span>World map</button>
+          <button class="nav-item" data-page="planner"><span class="nav-icon">▦</span>Meeting planner</button>
+          <button class="nav-item" data-page="alarms"><span class="nav-icon">◴</span>Alarms</button>
+          <button class="nav-item" data-page="travel"><span class="nav-icon">⌁</span>Travel mode</button>
+          <button class="nav-item" data-page="calendar"><span class="nav-icon">▣</span>Calendar</button>
+          <button class="nav-item" data-page="tools"><span class="nav-icon">⌘</span>Time tools</button>
+        </nav>
+        <div class="sidebar-bottom">
+          <div class="sidebar-tip">
+            <div class="tip-icon">✦</div>
+            <strong>Time, together.</strong>
+            <p>Make every minute count, wherever work takes you.</p>
+            <span class="tip-decoration">◷</span>
+          </div>
+          <button class="nav-item settings-button" data-page="settings"><span class="nav-icon">⚙</span>Preferences</button>
+          <div class="profile-row">
+            <div class="avatar">Y</div>
+            <div class="profile-copy"><strong>Your workspace</strong><span>Personal plan</span></div>
+            <button class="icon-button profile-menu" aria-label="Workspace menu">···</button>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <button class="mobile-menu icon-button" id="mobile-menu" aria-label="Open navigation">☰</button>
+          <div class="breadcrumbs"><span>Workspace</span><span class="crumb-slash">/</span><strong id="breadcrumb-current">Overview</strong></div>
+          <div class="topbar-right">
+            <div class="live-status"><span class="live-dot"></span><span>Live time</span></div>
+            <button class="icon-button top-icon" id="theme-toggle" aria-label="Toggle dark theme">☼</button>
+            <button class="icon-button top-icon" id="help-button" aria-label="Help">?</button>
+            <div class="top-avatar">Y</div>
+          </div>
+        </header>
+
+        <div class="page-wrap">
+          <section class="page active" id="page-home">
+            <div class="page-heading">
+              <div><div class="eyebrow"><span class="eyebrow-line"></span>THURSDAY, OCTOBER 24</div><h1>Your world, <span>in sync.</span></h1><p class="heading-subtitle">A little perspective on the hours ahead.</p></div>
+              <button class="button button-primary" data-goto="converter"><span>＋</span> New conversion</button>
+            </div>
+            <div class="hero-grid">
+              <article class="card home-clock-card">
+                <div class="card-head"><div class="card-label"><span class="live-dot"></span>YOUR LOCAL TIME</div><button class="icon-button small-icon" aria-label="Local time options">···</button></div>
+                <div class="local-city"><span class="location-pin">⌖</span><span id="home-city">Your location</span><span class="location-chevron">⌄</span></div>
+                <div class="hero-time" id="home-time">--:--<span id="home-seconds">:--</span><span class="hero-period" id="home-period"></span></div>
+                <div class="hero-date" id="home-date">Finding your local time…</div>
+                <div class="clock-footer"><span class="timezone-pill" id="home-zone">Local time zone</span><span class="utc-offset" id="home-offset">UTC+00:00</span></div>
+                <div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div><div class="hero-glow"></div>
+              </article>
+              <article class="card focus-card">
+                <div class="focus-top"><div class="card-label">YOUR DAY AT A GLANCE</div><span class="focus-date" id="focus-date">TODAY</span></div>
+                <div class="focus-score"><span>You're right on</span><strong>time<span>.</span></strong></div>
+                <p class="focus-description">Keep your day in rhythm with the rest of the world.</p>
+                <div class="timeline" id="timeline">
+                  <div class="timeline-track"></div>
+                  <span class="timeline-tick tick-1">6a</span><span class="timeline-tick tick-2">9a</span><span class="timeline-tick tick-3">12p</span><span class="timeline-tick tick-4">3p</span><span class="timeline-tick tick-5">6p</span><span class="timeline-tick tick-6">9p</span>
+                  <div class="timeline-marker" id="timeline-marker"></div>
+                  <div class="timeline-label">NOW</div>
+                </div>
+                <div class="timeline-legend"><span><i class="legend-dot daylight"></i>Daytime</span><span><i class="legend-dot evening"></i>Evening</span><span><i class="legend-dot nighttime"></i>Night</span></div>
+              </article>
+            </div>
+
+            <div class="section-title-row"><div><div class="section-kicker">AROUND THE WORLD</div><h2>Favorite places <span class="count-pill" id="favorite-count">04</span></h2></div><button class="text-button" data-goto="world">All time zones <span>→</span></button></div>
+            <div class="city-grid" id="home-cities"></div>
+
+            <div class="bottom-grid">
+              <article class="card conversion-widget">
+                <div class="widget-heading"><div><div class="section-kicker">MAKE IT MAKE SENSE</div><h2>Quick conversion</h2></div><span class="widget-icon">⇄</span></div>
+                <div class="quick-convert-row"><label class="field-label" for="quick-time">TIME</label><input id="quick-time" type="time" value="09:00"><button class="swap-button" id="quick-swap" aria-label="Swap time zones">⇄</button></div>
+                <div class="quick-zone-row"><div class="quick-zone"><span class="flag">🇺🇸</span><select id="quick-from"></select></div><span class="convert-arrow">→</span><div class="quick-zone"><span class="flag">🇬🇧</span><select id="quick-to"></select></div></div>
+                <div class="quick-result"><span>That makes it</span><strong id="quick-result">—</strong><span id="quick-date-shift"></span></div>
+                <button class="text-button conversion-link" data-goto="converter">Open time converter <span>→</span></button>
+              </article>
+              <article class="card next-up-card">
+                <div class="widget-heading"><div><div class="section-kicker">COMING UP</div><h2>Your next moments</h2></div><button class="icon-button small-icon" aria-label="Add reminder" id="add-alarm-shortcut">＋</button></div>
+                <div id="upcoming-items" class="upcoming-list"></div>
+                <button class="text-button upcoming-link" data-goto="calendar">View your calendar <span>→</span></button>
+              </article>
+            </div>
+          </section>
+
+          <section class="page" id="page-world">
+            <div class="page-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span>THE WORLD, RIGHT NOW</div><h1>World <span>clock.</span></h1><p class="heading-subtitle">The right time to connect, wherever they are.</p></div><button class="button button-primary" id="add-city-button"><span>＋</span> Add a city</button></div>
+            <div class="toolbar-card card"><div class="search-wrap"><span>⌕</span><input id="city-search" placeholder="Search cities or time zones…" autocomplete="off"></div><div class="toolbar-actions"><select id="city-sort" aria-label="Sort cities"><option value="custom">My order</option><option value="alpha">A to Z</option><option value="time">By local time</option></select><button class="view-toggle active" id="grid-view" aria-label="Grid view">▦</button><button class="view-toggle" id="list-view" aria-label="List view">☷</button></div></div>
+            <div class="search-results hidden" id="search-results"></div>
+            <div class="world-city-grid" id="world-cities"></div>
+          </section>
+
+          <section class="page" id="page-converter">
+            <div class="page-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span>NO MORE MENTAL MATH</div><h1>Time <span>converter.</span></h1><p class="heading-subtitle">One moment, translated around the world.</p></div></div>
+            <div class="converter-layout">
+              <article class="card converter-main">
+                <div class="converter-topline"><span class="card-label">CONVERT A MOMENT</span><span class="accuracy-note"><span>✦</span> DST-aware · IANA time zones</span></div>
+                <div class="convert-input-grid">
+                  <div class="convert-input-card"><label for="convert-date">DATE</label><input type="date" id="convert-date"><div class="select-label">FROM</div><select id="convert-from"></select></div>
+                  <div class="big-swap"><button class="swap-button" id="converter-swap" aria-label="Swap source and destination">⇄</button></div>
+                  <div class="convert-input-card"><label for="convert-time">TIME</label><input type="time" id="convert-time" value="09:00"><div class="select-label">TO</div><select id="convert-to"></select></div>
+                </div>
+                <div class="converted-result"><span class="result-label">YOUR CONVERTED TIME</span><strong id="converted-time">—</strong><div id="converted-date">Choose a time to see the local date</div><div class="result-zone" id="converted-zone"></div></div>
+                <div class="converter-buttons"><button class="button button-primary" id="copy-conversion">▢ &nbsp; Copy result</button><button class="button button-secondary" id="save-conversion">♡ &nbsp; Save conversion</button></div>
+                <div class="converter-note" id="converter-note"></div>
+              </article>
+              <aside class="card converter-aside"><div class="section-kicker">A LITTLE CONTEXT</div><h2>Time is a<br>team sport.</h2><p>We automatically account for daylight saving changes and date shifts, so everyone gets the right time.</p><div class="aside-divider"></div><div class="offset-comparison" id="offset-comparison"></div><div class="aside-tip"><span>✦</span><span>Pro tip: add your favorite cities to see the whole picture.</span></div></aside>
+            </div>
+            <div class="section-title-row saved-heading"><div><div class="section-kicker">YOUR SHORTCUTS</div><h2>Saved conversions</h2></div></div><div id="saved-conversions" class="saved-list"></div>
+          </section>
+
+          <section class="page" id="page-map">
+            <div class="page-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span>A WORLD OF LOCAL TIMES</div><h1>World <span>map.</span></h1><p class="heading-subtitle">Explore the current hour in cities across the globe.</p></div><div class="map-live-pill"><span class="live-dot"></span> LIVE CITY TIMES</div></div>
+            <article class="card world-map-card"><div class="map-toolbar"><span class="section-kicker">CITY TIME OVERVIEW</span><div class="map-legend"><span><i class="legend-dot daylight"></i>Day</span><span><i class="legend-dot nighttime"></i>Night</span></div></div><div class="map-canvas" id="map-canvas"><svg class="map-svg" viewBox="0 0 1000 500" role="img" aria-label="Stylized world map showing major cities and local time"><defs><pattern id="map-grid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M50 0H0V50" fill="none" stroke="currentColor" stroke-opacity=".09" stroke-width="1"/></pattern></defs><rect width="1000" height="500" fill="url(#map-grid)"/><g class="map-land"><path d="M101 117l38-39 49-9 24 15 34-4 23 22-4 24 25 15-12 22-29 5-15 24-24 10-19 38-27 4-9-24-21-9-7-25-24-16 7-22-21-21z"/><path d="M232 257l29 4 22 22-6 34-18 25-8 39-17 42-19-24 3-37-15-33 10-35-9-20z"/><path d="M421 119l28-28 45-7 27 16 15 23-19 17-28-3-24 17-22-9z"/><path d="M433 155l35-13 34 8 15 29-8 35-20 23-12 39-22 44-27 8-20-20 6-37-14-28 8-32-14-24z"/><path d="M490 113l43-43 70-18 55 18 42 5 31 25 43 2 38 25-18 20-37-9-26 20-25-6-27 28-37-5-22 23-39-14-17-24-33-4-10-24-25-7z"/><path d="M636 224l35-16 43 8 22 26-11 38-28 17-33-10-27-24z"/><path d="M809 300l33-12 37 10 13 24-29 19-40-8-20-16z"/><path d="M364 92l13-10 13 8-4 16-14 3z"/><path d="M761 355l17-4 8 13-13 14-13-6z"/></g><g class="map-equator"><path d="M0 250H1000"/></g><g id="map-zones"></g><g id="map-markers"></g></svg><div class="map-detail hidden" id="map-detail"></div><div class="map-controls"><button id="map-zoom-in" aria-label="Zoom in">＋</button><button id="map-zoom-out" aria-label="Zoom out">−</button></div><div class="map-note">Illustrative view · City markers show local time; boundaries are not legal timezone borders.</div></div></article>
+            <div class="map-city-strip" id="map-city-strip"></div>
+          </section>
+
+          <section class="page" id="page-planner">
+            <div class="page-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span>GOOD MEETINGS, NO GUESSWORK</div><h1>Meeting <span>planner.</span></h1><p class="heading-subtitle">Find a time that works for the whole world.</p></div><button class="button button-primary" id="copy-planner"><span>▢</span> Share plan</button></div>
+            <div class="card planner-controls"><div class="planner-control"><label for="planner-date">MEETING DATE</label><input type="date" id="planner-date"></div><div class="planner-control"><label>PARTICIPANTS</label><div class="participant-chips" id="participant-chips"></div></div><button class="button button-secondary" id="add-participant">＋ Add city</button></div>
+            <div class="card planner-chart"><div class="chart-heading"><div><div class="section-kicker">LOCAL HOURS BY CITY</div><h2>Find your overlap</h2></div><div class="chart-legend"><span><i class="legend-square work"></i>Working hours</span><span><i class="legend-square night"></i>Resting hours</span><span><i class="legend-square overlap"></i>Shared window</span></div></div><div class="planner-grid" id="planner-grid"></div><div class="planner-footer"><span><i class="live-dot"></i> Today in each city</span><span>Drag or choose a suggested time below</span></div></div>
+            <div class="section-title-row"><div><div class="section-kicker">THE SWEET SPOTS</div><h2>Best meeting windows <span class="count-pill" id="suggestion-count">0</span></h2></div></div><div id="meeting-suggestions" class="suggestion-grid"></div>
+          </section>
+
+          <section class="page" id="page-alarms">
+            <div class="page-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span>BE THERE, RIGHT ON TIME</div><h1>Alarms & <span>reminders.</span></h1><p class="heading-subtitle">Local browser reminders for moments that matter.</p></div><button class="button button-primary" id="add-alarm"><span>＋</span> New alarm</button></div>
+            <div class="alarm-info card"><span class="alarm-info-icon">◷</span><div><strong>On this device</strong><p>Alarms are checked while this app is open. Browser notifications may be enabled for a heads-up; this is not a server or push notification service.</p></div></div>
+            <div class="section-title-row"><div><div class="section-kicker">YOUR SCHEDULE</div><h2>Upcoming alarms</h2></div></div><div id="alarm-list" class="alarm-list"></div>
+          </section>
+
+          <section class="page" id="page-travel">
+            <div class="page-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span>LAND IN THE RIGHT TIME</div><h1>Travel <span>mode.</span></h1><p class="heading-subtitle">Keep home close, even when you’re far away.</p></div></div>
+            <div class="card travel-route"><div class="travel-city"><span class="travel-label">HOME</span><select id="travel-home"></select><strong id="travel-home-time">—</strong><span id="travel-home-date">—</span></div><div class="route-graphic"><span class="route-dot"></span><span class="route-line"></span><span class="plane">✈</span><span class="route-line"></span><span class="route-dot destination"></span><span class="route-duration" id="travel-difference">—</span></div><div class="travel-city destination-city"><span class="travel-label">DESTINATION</span><select id="travel-destination"></select><strong id="travel-destination-time">—</strong><span id="travel-destination-date">—</span></div></div>
+            <div class="travel-bottom-grid"><article class="card itinerary-card"><div class="widget-heading"><div><div class="section-kicker">YOUR JOURNEY</div><h2>Travel itinerary</h2></div><button class="button button-secondary compact-button" id="add-flight">＋ Add flight</button></div><div id="itinerary-list" class="itinerary-list"></div></article><article class="card jetlag-card"><div class="section-kicker">ARRIVE FEELING BETTER</div><h2>Your body has its own clock.</h2><p id="jetlag-advice">Choose a destination to get a gentle nudge toward settling into local time.</p><div class="jetlag-progress"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><i id="jetlag-marker"></i></div><div class="jetlag-caption"><span>Departure</span><span>Local rhythm</span></div></article></div>
+          </section>
+
+          <section class="page" id="page-calendar">
+            <div class="page-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span>YOUR LIFE, IN EVERY TIME ZONE</div><h1>Time <span>ahead.</span></h1><p class="heading-subtitle">A simple home for what’s coming up.</p></div><button class="button button-primary" id="add-event"><span>＋</span> Add an event</button></div>
+            <div class="calendar-layout"><article class="card calendar-card"><div class="calendar-header"><button class="icon-button" id="calendar-prev" aria-label="Previous month">‹</button><h2 id="calendar-month">—</h2><button class="icon-button" id="calendar-next" aria-label="Next month">›</button><button class="text-button" id="calendar-today">Today</button></div><div class="calendar-grid" id="calendar-grid"></div></article><article class="card event-card"><div class="section-kicker" id="selected-date-label">YOUR SCHEDULE</div><h2 id="selected-day-heading">Coming up</h2><div id="event-list" class="event-list"></div></article></div>
+          </section>
+
+          <section class="page" id="page-tools">
+            <div class="page-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span>HANDY THINGS FOR TIME</div><h1>Time <span>tools.</span></h1><p class="heading-subtitle">Little utilities. A lot less head scratching.</p></div></div>
+            <article class="card assistant-card"><div class="assistant-heading"><span class="assistant-spark">✦</span><div><div class="section-kicker">YOUR LOCAL TIME ASSISTANT</div><h2>Ask about time, anywhere.</h2><p>Quick answers for city times, time differences, and meeting windows. Your queries stay in this browser.</p></div></div><form id="assistant-form" class="assistant-form"><input id="assistant-query" autocomplete="off" placeholder="Try “What time is it in Tokyo?”" aria-label="Ask the time assistant"><button class="button button-primary">Ask <span>→</span></button></form><div class="assistant-prompts"><button data-prompt="What time is it in Tokyo?">Tokyo time</button><button data-prompt="What's the time difference between India and London?">India ↔ London</button><button data-prompt="Find the best meeting time for India, London, New York, and Tokyo.">Find a meeting time</button></div><div id="assistant-answer" class="assistant-answer" aria-live="polite"></div></article>
+            <div class="tools-grid">
+              <article class="card tool-card"><div class="tool-symbol">◷</div><div class="section-kicker">RIGHT NOW</div><h2>Unix timestamp</h2><p>Seconds since January 1, 1970.</p><div class="tool-result" id="unix-result">—</div><button class="text-button" id="copy-unix">Copy timestamp <span>→</span></button></article>
+              <article class="card tool-card"><div class="tool-symbol">⌁</div><div class="section-kicker">UTC / GMT</div><h2>Timestamp converter</h2><div class="tool-form"><input type="number" id="timestamp-input" placeholder="Enter a timestamp"><select id="timestamp-unit" aria-label="Timestamp unit"><option value="seconds">Seconds</option><option value="milliseconds">Milliseconds</option></select></div><button class="text-button" id="convert-timestamp">Convert timestamp <span>→</span></button><div class="tool-result" id="timestamp-result">Enter a Unix timestamp</div></article>
+              <article class="card tool-card"><div class="tool-symbol">↔</div><div class="section-kicker">COUNT THE DAYS</div><h2>Date difference</h2><div class="tool-form"><input type="date" id="diff-start"><span>to</span><input type="date" id="diff-end"></div><div class="tool-result" id="diff-result">Choose two dates</div></article>
+              <article class="card tool-card"><div class="tool-symbol">◴</div><div class="section-kicker">MAKE SOME TIME</div><h2>Countdown</h2><p id="timer-display" class="timer-display">00:00:00</p><div class="timer-controls"><input type="number" id="timer-minutes" min="1" max="1440" value="5" aria-label="Countdown minutes"><span>minutes</span><button class="button button-primary compact-button" id="timer-start">Start</button><button class="button button-secondary compact-button" id="timer-reset">Reset</button></div></article>
+              <article class="card tool-card"><div class="tool-symbol">◉</div><div class="section-kicker">KEEP THE MOMENT</div><h2>Stopwatch</h2><p class="stopwatch-display" id="stopwatch-display">00:00.00</p><div class="timer-controls"><button class="button button-primary compact-button" id="stopwatch-toggle">Start</button><button class="button button-secondary compact-button" id="stopwatch-lap">Lap</button><button class="button button-secondary compact-button" id="stopwatch-reset">Reset</button></div><div class="stopwatch-laps" id="stopwatch-laps"></div></article>
+              <article class="card tool-card"><div class="tool-symbol">⇢</div><div class="section-kicker">ELAPSED TIME</div><h2>Duration calculator</h2><div class="tool-form"><input type="datetime-local" id="duration-start" aria-label="Start date and time"><span>to</span><input type="datetime-local" id="duration-end" aria-label="End date and time"></div><div class="tool-result" id="duration-result">Choose start and end</div><p class="tool-footnote">Uses your device's local time zone.</p></article>
+              <article class="card tool-card"><div class="tool-symbol">▦</div><div class="section-kicker">DATE CHECK</div><h2>Week number</h2><p>ISO week of the year.</p><div class="tool-form"><input type="date" id="week-date"></div><div class="tool-result" id="week-result">—</div></article>
+              <article class="card tool-card"><div class="tool-symbol">◎</div><div class="section-kicker">WORLD DATE</div><h2>What day is it?</h2><p>Compare the date in two places.</p><div class="tool-form"><select id="date-zone-one"></select><span>&</span><select id="date-zone-two"></select></div><div class="tool-result" id="world-date-result">—</div></article>
+              <article class="card tool-card"><div class="tool-symbol">☾</div><div class="section-kicker">LUNAR CYCLE</div><h2>Moon phase</h2><p>Approximate phase for today.</p><div class="tool-result" id="moon-result">—</div><div class="moon-illumination"><span id="moon-illumination"></span></div></article>
+              <article class="card tool-card"><div class="tool-symbol">☼</div><div class="section-kicker">DAYLIGHT</div><h2>Sunrise & sunset</h2><p>Approximate solar times for a city.</p><div class="tool-form"><select id="sun-city"></select></div><div class="tool-result" id="sun-result">Choose a city</div><p class="tool-footnote">Solar times are approximate; location coordinates are city-center estimates.</p></article>
+            </div>
+          </section>
+
+          <section class="page" id="page-settings">
+            <div class="page-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span>MAKE YOURSELF AT HOME</div><h1>Your <span>preferences.</span></h1><p class="heading-subtitle">Set things up just the way you like them.</p></div></div>
+            <article class="card settings-card"><div class="setting-row"><div><strong>Time format</strong><p>Choose how your clocks show the time.</p></div><select id="setting-format"><option value="12">12-hour</option><option value="24">24-hour</option></select></div><div class="setting-row"><div><strong>Appearance</strong><p>Switch between a bright and dark workspace.</p></div><button class="button button-secondary" id="setting-theme">Toggle theme</button></div><div class="setting-row"><div><strong>Home city</strong><p>Used for time differences and travel mode.</p></div><select id="setting-home"></select></div><div class="setting-row"><div><strong>Saved data</strong><p>Your clocks and events are saved in this browser.</p></div><span class="privacy-note">Stored on this device</span></div></article>
+          </section>
+          <footer class="footer"><span>Made for a world that never clocks out.</span><span><i class="live-dot"></i> Times update automatically</span></footer>
+        </div>
+      </main>
+      <nav class="mobile-nav" aria-label="Mobile navigation"><button class="active" data-page="home"><span>⌂</span>Home</button><button data-page="world"><span>◷</span>World</button><button data-page="converter"><span>⇄</span>Convert</button><button data-page="planner"><span>▦</span>Plan</button><button data-page="tools"><span>⌘</span>Tools</button></nav>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <dialog id="entry-dialog" class="entry-dialog"><form method="dialog" id="entry-form"><button class="dialog-close" aria-label="Close">×</button><div class="section-kicker" id="dialog-eyebrow">ADD TO YOUR WORKSPACE</div><h2 id="dialog-title">Add something new</h2><div id="dialog-fields"></div><div class="dialog-actions"><button class="button button-secondary" value="cancel">Cancel</button><button class="button button-primary" id="dialog-submit" value="save">Save</button></div></form></dialog>
+    <script src="app.js"></script>
+  </body>
+</html>
